@@ -13,6 +13,9 @@ with engine.engine.connect() as conn:
 
 
 # "Commit As You Go" style
+# NOTE: SQL statements are usually accompanied by data that is to be passed with the statement itself, 
+#       as we saw in the INSERT example previously. 
+#       The Connection.execute() method therefore also accepts parameters, which are known as bound parameters.
 with engine.engine.connect() as conn:
     conn.execute(text("CREATE TABLE some_table (x int, y int)"))
     conn.execute(text("INSERT INTO some_table (x, y) VALUES (:x, :y)"),[{"x": 1, "y": 2}, {"x": 3, "y": 4}])
